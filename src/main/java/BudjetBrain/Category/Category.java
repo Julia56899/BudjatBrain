@@ -1,6 +1,7 @@
-package BudjetBrain;
+package BudjetBrain.Category;
 
 
+import BudjetBrain.User.User;
 import jakarta.persistence.*;
 
 @Entity

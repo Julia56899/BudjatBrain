@@ -1,11 +1,9 @@
-package BudjetBrain;
+package BudjetBrain.User;
 
-import BudjetBrain.UserDTO;
-import BudjetBrain.UserService;
-import BudjetBrain.User;
+import BudjetBrain.Transaction.Transaction;
+import BudjetBrain.Transaction.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import BudjetBrain.TransactionService;
 
 import java.util.List;
 

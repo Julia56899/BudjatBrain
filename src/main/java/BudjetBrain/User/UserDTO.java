@@ -1,4 +1,4 @@
-package BudjetBrain;  // без com.budjetbrain.User
+package BudjetBrain.User;  // без com.budjetbrain.User
 
 
 public class UserDTO {

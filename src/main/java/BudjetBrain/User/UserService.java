@@ -1,12 +1,9 @@
-package BudjetBrain;
-import BudjetBrain.User;
+package BudjetBrain.User;
 
-import BudjetBrain.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.concurrent.SynchronousQueue;
 
 
 //здесь должен быть метод регистор - роегистрация пользоватея

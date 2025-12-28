@@ -1,4 +1,4 @@
-package BudjetBrain;
+package BudjetBrain.Category;
 
 //в дто аннотации не добавляются
 

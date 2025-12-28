@@ -1,8 +1,9 @@
-package BudjetBrain;
+package BudjetBrain.Recommendation;
 
 
+import BudjetBrain.Transaction.Transaction;
+import BudjetBrain.Transaction.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -10,8 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class RecommendationService {

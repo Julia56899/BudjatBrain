@@ -1,4 +1,4 @@
-package BudjetBrain;
+package BudjetBrain.Recommendation;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,11 +1,9 @@
-package BudjetBrain;
+package BudjetBrain.User;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import BudjetBrain.Transaction.Transaction;
 import jakarta.persistence.*;
 
-import javax.xml.crypto.Data;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity

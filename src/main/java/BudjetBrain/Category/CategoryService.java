@@ -1,6 +1,8 @@
-package BudjetBrain;
+package BudjetBrain.Category;
 
 
+import BudjetBrain.User.User;
+import BudjetBrain.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

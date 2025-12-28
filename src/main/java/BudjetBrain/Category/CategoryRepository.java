@@ -1,5 +1,6 @@
-package BudjetBrain;
+package BudjetBrain.Category;
 
+import BudjetBrain.User.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

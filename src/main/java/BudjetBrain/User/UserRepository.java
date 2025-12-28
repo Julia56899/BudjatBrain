@@ -1,4 +1,4 @@
-package BudjetBrain;
+package BudjetBrain.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

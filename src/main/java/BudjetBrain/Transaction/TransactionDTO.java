@@ -1,6 +1,4 @@
-package BudjetBrain;
-
-import java.time.LocalDateTime;
+package BudjetBrain.Transaction;
 
 public class TransactionDTO {
 

@@ -1,6 +1,8 @@
-package BudjetBrain;
+package BudjetBrain.Transaction;
 
 
+import BudjetBrain.Category.Category;
+import BudjetBrain.User.User;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;

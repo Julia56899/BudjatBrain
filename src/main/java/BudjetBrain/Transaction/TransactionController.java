@@ -1,6 +1,7 @@
-package BudjetBrain;
+package BudjetBrain.Transaction;
 
 
+import BudjetBrain.Balance.BalanceDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +11,7 @@ import java.util.Map;
 @RestController
 public class TransactionController {
     @Autowired
-    private  TransactionService transactionService;
+    private TransactionService transactionService;
 
     @Autowired
     private TransactionRepository transactionRepository;

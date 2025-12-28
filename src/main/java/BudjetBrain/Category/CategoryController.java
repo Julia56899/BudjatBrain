@@ -1,6 +1,9 @@
-package BudjetBrain;
+package BudjetBrain.Category;
 
 
+import BudjetBrain.Transaction.TransactionService;
+import BudjetBrain.User.User;
+import BudjetBrain.User.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
