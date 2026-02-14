@@ -22,12 +22,7 @@ public class UserService {
     }
 
     public User getUserId(Long id) {
-        for(User user:userRepository.findAll()) {
-            if(user.getId().equals(id)) {
-                return user;
-            }
-        }
-        return null;
+        return userRepository.findById(id).orElse(null);
     }
 
 

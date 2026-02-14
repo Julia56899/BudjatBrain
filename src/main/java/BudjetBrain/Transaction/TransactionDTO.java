@@ -4,18 +4,18 @@ public class TransactionDTO {
 
     private Double amount;
     private String typeTransaction;
-    private Long categoryId;
-    private Long userId;
+    private Long category;
+    private Long user;
     private String description;
 
 
     public TransactionDTO () {}
 
-    public TransactionDTO (Double amount, String typeTransaction, Long categoryId, Long userId){
+    public TransactionDTO (Double amount, String typeTransaction, Long category, Long user){
         this.amount = amount;
         this.typeTransaction = typeTransaction;
-        this.categoryId = categoryId;
-        this.userId = userId;
+        this.category = category;
+        this.user = user;
     }
     //геттеры и сеттеры
     public Double getAmount () {
@@ -30,13 +30,23 @@ public class TransactionDTO {
     } public void setTypeTransaction(String typeTransaction) {
         this.typeTransaction = typeTransaction;
     }
-    public Long getCategoryId() {
-        return categoryId;
+    public Long getCategory() {
+        return category;
+    }
+    public void setCategory(Long category) {
+        this.category = category;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getUser() {
+        return user;
     }
+//для тестов сделаем сеттер
+    public void setUser(Long user) {
+        this.user = user;
+    }
+
+
+
     public String getDescription() {
         return description;
     } public void setDescription(String description) {

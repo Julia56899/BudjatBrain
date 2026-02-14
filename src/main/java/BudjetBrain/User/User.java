@@ -40,7 +40,18 @@ private List<Transaction> transactions;
 public Long getId() {
         return id;
 }
+//сеттер чисто для тестов нужен
+    public void setId(Long id) {
+        this.id = id;
+    }
+//транзактионс для теста
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
 
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
 
     public String getUsername() {
         return username;

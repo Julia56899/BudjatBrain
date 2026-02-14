@@ -7,6 +7,7 @@ import BudjetBrain.Category.CategoryRepository;
 import BudjetBrain.User.User;
 import BudjetBrain.User.UserRepository;
 import BudjetBrain.User.UserService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,19 +31,15 @@ public class TransactionService {
     private CategoryPredictor categoryPredictor;
 
 
-    public List<Transaction> getAllTransactions() {
+    public List<Transaction>getAllTransactions () {
         return transactionRepository.findAll();
     }
-
     //находит транзакцию по ее айди
     public Transaction getTransactionId(Long id) {
-        for (Transaction transaction : transactionRepository.findAll()) {
-            if (transaction.getId().equals(id)) {
-                return transaction;
+        return transactionRepository.findById(id)
+                .orElseThrow(()-> new EntityNotFoundException("Transaction not found"));
             }
-        }
-        return null;
-    }
+
 
     public List<Transaction> getTransactionsByIdUser(Long userId) {
         return transactionRepository.findByUserId(userId);
@@ -56,12 +53,12 @@ public class TransactionService {
         List<User> users = userRepository.findAll();
 
         System.out.println("Всего пользователей:" + users.size());
-        System.out.println("Айди пользователя, которого ищем:" + dto.getUserId());
+        System.out.println("Айди пользователя, которого ищем:" + dto.getUser());
         for (User user : users) {
             System.out.println("Пользователь айди:" + user.getId() + ", email =" + user.getEmail());
         }
 
-        Optional<User> userOptional = userRepository.findById(dto.getUserId());
+        Optional<User> userOptional = userRepository.findById(dto.getUser());
         if (userOptional.isEmpty()) {
             return null;
         }
@@ -72,22 +69,26 @@ public class TransactionService {
         String categoryName = null;
         //дальше блок по получению категории
         //дальше ищем в бд эту категорию, что она уже была сохранена
-        if (dto.getCategoryId() != null) {
-            Optional<Category> categoryOptional = categoryRepository.findById(dto.getCategoryId());
+        if (dto.getCategory() != null) {
+            Optional<Category> categoryOptional = categoryRepository.findById(dto.getCategory());
+
             if (categoryOptional.isPresent()) {
                 category = categoryOptional.get();
+
             } else if (categoryOptional.isEmpty()) {
                 String description = dto.getDescription();
                 //дальше по этому описанию ищем в категори предиктор категорию
                 categoryName = categoryPredictor.predictCategory(description);
 //ищет в бд категорию с названием еда у этого пользователя
                 category = categoryRepository.findByNameAndUser(categoryName, foundUser);
+
             }
             if (category == null) {
                 String categoryType = dto.getTypeTransaction();
                 category = new Category(categoryType, categoryName, foundUser);
+                categoryRepository.save(category);
             }
-        } else if (dto.getCategoryId() == null) {
+        } else if (dto.getCategory() == null) {
             //мл-категоризация
 //получаем описание из трназакции
             String description = dto.getDescription();
@@ -95,6 +96,7 @@ public class TransactionService {
             categoryName = categoryPredictor.predictCategory(description);
 //ищет в бд категорию с названием еда у этого пользователя
             category = categoryRepository.findByNameAndUser(categoryName, foundUser);
+
         }
         if (category == null) {
             String categoryType = dto.getTypeTransaction();

@@ -42,7 +42,13 @@ public class Transaction {
     //геттеры и сеттеры
     public Long getId() {
         return id;
-    } public Double getAmount () {
+    }
+//добавим сеттер для теста
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Double getAmount () {
         return amount;
     }
     public void setAmount(Double amount) {
@@ -62,8 +68,22 @@ public class Transaction {
     public LocalDateTime getDateTransaction() {
         return  dateTransaction;
     }
+    //для теста сделаем сеттранзактион
+    public void setDateTransaction(LocalDateTime dateTransaction) {
+        this.dateTransaction = dateTransaction;
+    }
+
+
     public User getUser() {
         return user;
     }
+
+    //для тестов добавим сетюзер
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
+
     }
 

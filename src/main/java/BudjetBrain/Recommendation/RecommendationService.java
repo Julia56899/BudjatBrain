@@ -86,7 +86,7 @@ public class RecommendationService {
         }
 
         if (!foundSaving) {
-            return "в этом месяцу нет накоплений, рекомендуем откладывать 10% от своего дохода";
+            return "в этом месяце нет накоплений, рекомендуем откладывать 10% от своего дохода";
         }
         return null;
     }
@@ -128,12 +128,13 @@ public class RecommendationService {
                 if ("EXPENSE".equals(ttt.getTypeTransaction()) && "Развлечения".equals(ttt.getCategory().getName())) {
                     sumPurchases += ttt.getAmount();
                 }
+            }
                 if (sumPurchases > incomeOfMonth * 0.3) {
-                    return "Было потрачено много на разлечения в этот день" + ttt.getDateTransaction() + "а именно 30% от вашего ежедвевного дохода, потрачено было" + sumPurchases;
+                    return "Было потрачено много на развлечения в этот день, а именно 30% от вашего ежедвевного дохода, потрачено было" + sumPurchases;
                 }
             }
 
-        }
+
         return null;
     }
     // Дисбаланс доходов/расходов
@@ -163,19 +164,25 @@ public class RecommendationService {
         }
 
    //Ключевые категории без трат
-//Условие: Нет трат на "Жильё" или "Здоровье" 2 месяца при наличии доходов
+//Условие: Нет трат на "Жильё" или "Здоровье" при наличии доходов
 public String recommendationCategoriesWithoutExpenses (Long userId) {
+    int currentMonth = LocalDate.now().getMonthValue();
+    Boolean noExpenseOne = noExpenseOfCategory(userId, "Жилье", currentMonth);
+    Boolean noExpenseTwo = noExpenseOfCategory(userId, "Здоровье", currentMonth);
 
-    Boolean noExpenseOne = noExpenseOfCategory(userId, "Жилье", 12);
-    Boolean noExpenseTwo = noExpenseOfCategory(userId, "Здоровье", 12);
+    String result = "";
 
     if (noExpenseOne) {
-        return "В этом месяце у вас не было трат на Жилье, проверьте платежи";
+        result += "В этом месяце у вас не было трат на Жилье, проверьте платежи";
     }
     if (noExpenseTwo) {
-        return "В этом месяце у вас не было трат на здоровье, проверьте платежи";
+        result += "В этом месяце у вас не было трат на здоровье, проверьте платежи";
     }
-    return null;
+    if (result.isEmpty()) {
+        return null;
+    }
+    return  result;
+
 }
 private Boolean noExpenseOfCategory(Long userId, String categoryName, int currentMonth) {
 
