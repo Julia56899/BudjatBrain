@@ -93,7 +93,7 @@ private Category category;
                                 .andExpect(status().isOk())
                                 .andExpect(jsonPath("$.amount").value(900.0))
                                 .andExpect(jsonPath("$.category").exists())
-        .andExpect(jsonPath("$.user").value(1L));
+        .andExpect(jsonPath("$.user.id").value(1L));
 
 
             verify(transactionService).addTransaction(any(TransactionDTO.class));
@@ -133,7 +133,7 @@ private Category category;
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$[*].amount").exists())
                     .andExpect(jsonPath("$[1].typeTransaction").value("EXPENSE"))
-                    .andExpect(jsonPath("$.[0].user").value(1L));
+                    .andExpect(jsonPath("$.[0].user.id").value(1L));
 
             verify(transactionService).getAllTransactions();
 
